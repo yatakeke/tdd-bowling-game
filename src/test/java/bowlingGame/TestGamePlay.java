@@ -42,6 +42,18 @@ public class TestGamePlay {
         assertEquals(24, g.score());
     }
 
+    @Test
+    public void testストライクを一回出してその後のフレームで合計9点を出した時に得点が28点になる() {
+        Game g = new Game();
+
+        GameFrame firstFrame = playSingleFrame(10, 0);
+        g.register(firstFrame);
+        GameFrame secondFrame = playSingleFrame(5, 4);
+        g.register(secondFrame);
+
+        assertEquals(28, g.score());
+    }
+
     public GameFrame playSingleFrame(int firstPin, int secondPin) {
         GameFrame gf = new GameFrame();
         gf.play(firstPin);
