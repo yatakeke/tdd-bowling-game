@@ -2,11 +2,12 @@ package bowlingGame;
 
 public class Game {
 
-    public void play() {
-
+    private int score = 0;
+    public void play(int pins) {
+        score += pins;
     }
 
-    public int score() {
-        return 0;
+    public int getScore() {
+        return score;
     }
 }
