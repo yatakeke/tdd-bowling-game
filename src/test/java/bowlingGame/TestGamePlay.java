@@ -7,13 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestGamePlay {
 
     @Test
-    public void test一回球を投げれる() {
-        Game newGame = new Game();
-        newGame.play(0);
-
-    }
-
-    @Test
     public void test0本倒した後にscoreが0になる() {
 
         Game newGame = new Game();
@@ -37,4 +30,5 @@ public class TestGamePlay {
 
         assertEquals(2, game.getScore());
     }
+
 }
