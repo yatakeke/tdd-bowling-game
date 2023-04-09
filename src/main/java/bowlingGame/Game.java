@@ -19,13 +19,21 @@ public class Game {
         return gf.getScore() == 10;
     }
 
+    public Boolean isStrike(GameFrame gf) {
+        return gf.getScore() == 10 && gf.getFirstScore() == 10;
+    }
+
     public int score() {
         int totalScore = 0;
         for (GameFrame gf: frames) {
-            if (isSpare(gf)) {
+            if (isStrike(gf)) {
+                GameFrame nextGf = frames.get(frames.indexOf(gf) + 1);
+                totalScore += gf.getScore() + nextGf.getScore();
+            } else if (isSpare(gf)) {
                 GameFrame nextGf = frames.get(frames.indexOf(gf) + 1);
                 totalScore += gf.getScore() + nextGf.getFirstScore();
-            } else {
+            }
+            else {
                 totalScore += gf.getScore();
             }
         }
