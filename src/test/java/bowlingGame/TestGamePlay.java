@@ -7,28 +7,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestGamePlay {
 
     @Test
-    public void test0本倒した後にscoreが0になる() {
+    public void testすべての投球がガーターのときに最終スコアは0点になる() {
 
-        Game newGame = new Game();
-        newGame.play(0);
+        Game g = new Game();
+        for (int i = 0; i < 10; i++) {
+            GameFrame gf = new GameFrame();
+            gf.play(0);
+            gf.play(0);
+            g.register(gf);
+        }
 
-        assertEquals(0, newGame.getScore());
+        assertEquals(0, g.score());
     }
 
     @Test
-    public void test1本倒した後にscoreが1になる() {
-        Game game = new Game();
-        game.play(1);
+    public void test10回全てで5本だけ倒したときに最終スコアは50点になる() {
+        Game g = new Game();
+        for (int i = 0; i < 10; i++) {
+            GameFrame gf = new GameFrame();
+            gf.play(5);
+            gf.play(0);
+            g.register(gf);
+        }
 
-        assertEquals(1, game.getScore());
+        assertEquals(50, g.score());
     }
-
-    @Test
-    public void test２本倒した後にscoreが2になる() {
-        Game game = new Game();
-        game.play(2);
-
-        assertEquals(2, game.getScore());
-    }
-
+    
 }
