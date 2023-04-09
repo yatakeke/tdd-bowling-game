@@ -15,10 +15,19 @@ public class Game {
         frames.add(gf);
     }
 
+    public Boolean isSpare(GameFrame gf) {
+        return gf.getScore() == 10;
+    }
+
     public int score() {
         int totalScore = 0;
         for (GameFrame gf: frames) {
-            totalScore += gf.getScore();
+            if (isSpare(gf)) {
+                GameFrame nextGf = frames.get(frames.indexOf(gf) + 1);
+                totalScore += gf.getScore() + nextGf.getFirstScore();
+            } else {
+                totalScore += gf.getScore();
+            }
         }
         return totalScore;
     }
