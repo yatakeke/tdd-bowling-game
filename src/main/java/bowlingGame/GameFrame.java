@@ -26,4 +26,12 @@ public class GameFrame {
         // spareの際に必要そう
         return scores.get(0);
     }
+
+    public Boolean isSpare() {
+        return getScore() == 10 && getFirstScore() != 10;
+    }
+
+    public Boolean isStrike() {
+        return getScore() == 10 && getFirstScore() == 10;
+    }
 }
